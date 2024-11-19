@@ -48,7 +48,7 @@ export default function ProductDetails({ params }: any) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        GetDataToken(`api/v1/product/products/${params.slug}/`).then((res) => {
+        GetData(`api/v1/product/products/${params.slug}/`).then((res) => {
             setData(res);
         });
     }, []);
