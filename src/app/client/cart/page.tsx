@@ -16,6 +16,7 @@ import ProductsList from "@/components/common/ProductsList";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { PostData, PostDataToken } from "@/services.jsx/data";
+import { Product } from "@/types";
 
 export default function Cart() {
     const cart = useSelector((state: RootState) => state.cart.cart);
@@ -61,8 +62,8 @@ export default function Cart() {
                     <div className="flex-1">
                         <h1 className="text-[32px] font-bold">Корзина</h1>
                         {cart.length > 0 ? (
-                            cart.map((item,ind) => (
-                                <CartItem key={ind} product={item} />
+                            cart.map((product: Product, ind) => (
+                                <CartItem key={ind} product={product} />
                             ))
                         ) : (
                             <div className="h-[300px] md:h-[400px] text-center flex flex-col gap-1 justify-center items-center">

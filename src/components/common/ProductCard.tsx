@@ -23,8 +23,9 @@ import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FaSortDown } from "react-icons/fa";
 import Link from "next/link";
-import { Product, addProduct } from "@/store/cartSlice/cartSlice";
+import { addProduct } from "@/store/cartSlice/cartSlice";
 import { useDispatch } from "react-redux";
+import { Product } from "@/types";
 const frameworks = [
     {
         value: "s",

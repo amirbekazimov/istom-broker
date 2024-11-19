@@ -25,7 +25,9 @@ const CartItem = ({ product }: { product: Product }) => {
                 >
                     <Image
                         className="w-full h-full object-cover rounded-[10px]"
-                        src={product?.images && product?.images[0]?.image}
+                        src={
+                            (product?.images && product?.images[0]?.image) || ""
+                        }
                         alt={product.name}
                         width={110}
                         height={110}

@@ -22,8 +22,9 @@ import ProductsList from "@/components/common/ProductsList";
 import { Subscribe } from "@/components/common";
 import { ProductFeatues } from "@/components/client";
 import { useDispatch } from "react-redux";
-import { Product, addProduct } from "@/store/cartSlice/cartSlice";
+import { addProduct } from "@/store/cartSlice/cartSlice";
 import { GetData, GetDataToken } from "@/services.jsx/data";
+import { Product } from "@/types";
 const product = {
     id: 1,
     name: "ТОР Кламп № В5",
