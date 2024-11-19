@@ -23,10 +23,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { GetData } from "@/services.jsx/data";
 
+interface Filters {
+    countries?: string[]; // Explicitly type the 'countries' property as an array of strings
+    sizes?: string[]; // Explicitly type the 'countries' property as an array of strings
+    volumes?: string[]; // Explicitly type the 'countries' property as an array of strings
+    sizes_of_brackets?: string[]; // Explicitly type the 'countries' property as an array of strings
+    heights_of_closing_brackets?: string[]; // Explicitly type the 'countries' property as an array of strings
+    outer_diameters_of_heads?: string[]; // Explicitly type the 'countries' property as an array of strings
+}
+
 export default function Catalog() {
     const [products, setProducts] = useState([]);
-    const [filters, setFilters] = useState([]);
-    const [query, setQuery] = useState(null);
+    const [filters, setFilters] = useState<Filters | null>(null);
+    const [query, setQuery] = useState("");
     const [country_, setCountry_] = useState("");
     const [size_, setSize_] = useState("");
     const [volume_, setVolume_] = useState("");
@@ -49,8 +58,6 @@ export default function Catalog() {
             }
         );
     }, []);
-
-
 
     return (
         <>
@@ -98,7 +105,10 @@ export default function Catalog() {
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
                                     {filters?.countries?.map((country: any) => (
-                                        <div className="flex items-center space-x-2">
+                                        <div
+                                            key={country}
+                                            className="flex items-center space-x-2"
+                                        >
                                             <Checkbox
                                                 onClick={() =>
                                                     setCountry_(country)
@@ -142,7 +152,10 @@ export default function Catalog() {
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
                                     {filters?.sizes?.map((size: any) => (
-                                        <div className="flex items-center space-x-2">
+                                        <div
+                                            key={size}
+                                            className="flex items-center space-x-2"
+                                        >
                                             <Checkbox
                                                 onClick={() => setSize_(size)}
                                                 className="border-[#C5C5C5] bg-[#F0F1F2"
@@ -182,7 +195,10 @@ export default function Catalog() {
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
                                     {filters?.volumes?.map((volume: any) => (
-                                        <div className="flex items-center space-x-2">
+                                        <div
+                                            key={volume}
+                                            className="flex items-center space-x-2"
+                                        >
                                             <Checkbox
                                                 onClick={() =>
                                                     setVolume_(volume)
@@ -225,7 +241,10 @@ export default function Catalog() {
                                 <AccordionContent className="space-y-3">
                                     {filters?.sizes_of_brackets?.map(
                                         (sizes_of_bracket: any) => (
-                                            <div className="flex items-center space-x-2">
+                                            <div
+                                                key={sizes_of_bracket}
+                                                className="flex items-center space-x-2"
+                                            >
                                                 <Checkbox
                                                     onClick={() =>
                                                         setSizes_of_bracket_(
@@ -273,7 +292,10 @@ export default function Catalog() {
                                 <AccordionContent className="space-y-3">
                                     {filters?.heights_of_closing_brackets?.map(
                                         (heights_of_closing_bracket: any) => (
-                                            <div className="flex items-center space-x-2">
+                                            <div
+                                                key={heights_of_closing_bracket}
+                                                className="flex items-center space-x-2"
+                                            >
                                                 <Checkbox
                                                     onClick={() =>
                                                         setHeights_of_closing_bracket_(
@@ -321,7 +343,10 @@ export default function Catalog() {
                                 <AccordionContent className="space-y-3">
                                     {filters?.outer_diameters_of_heads?.map(
                                         (outer_diameters_of_head: any) => (
-                                            <div className="flex items-center space-x-2">
+                                            <div
+                                                key={outer_diameters_of_head}
+                                                className="flex items-center space-x-2"
+                                            >
                                                 <Checkbox
                                                     onClick={() =>
                                                         setOuter_diameters_of_head_(
@@ -387,7 +412,10 @@ export default function Catalog() {
                         </div>
                         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-2 mt-5">
                             {products?.map((product: any) => (
-                                <ProductCard product={product} />
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                />
                             ))}
                         </div>
                     </div>

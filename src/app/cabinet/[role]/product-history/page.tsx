@@ -40,7 +40,7 @@ const ProductHistory = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-4">
                 {products?.map((product: any) => (
-                    <HistoryProductCard product={product} />
+                    <HistoryProductCard key={product?.id} product={product} />
                 ))}
             </div>
             <ButtonLink label="Добавить товар" href="/client/home"></ButtonLink>
