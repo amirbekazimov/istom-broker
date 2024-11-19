@@ -104,32 +104,34 @@ export default function Catalog() {
                                     Страна
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
-                                    {filters?.countries?.map((country: any) => (
-                                        <div
-                                            key={country}
-                                            className="flex items-center space-x-2"
-                                        >
-                                            <Checkbox
-                                                onClick={() =>
-                                                    setCountry_(country)
-                                                }
-                                                className="border-[#C5C5C5] bg-[#F0F1F2"
-                                                id="terms"
-                                            />
-                                            <label
-                                                htmlFor="terms"
-                                                className="text-sm text-[#818181] font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    {filters?.countries?.map(
+                                        (country: any, ind) => (
+                                            <div
+                                                key={ind}
+                                                className="flex items-center space-x-2"
                                             >
-                                                {country}
-                                            </label>
-                                        </div>
-                                    ))}
+                                                <Checkbox
+                                                    onClick={() =>
+                                                        setCountry_(country)
+                                                    }
+                                                    className="border-[#C5C5C5] bg-[#F0F1F2"
+                                                    id="terms"
+                                                />
+                                                <label
+                                                    htmlFor="terms"
+                                                    className="text-sm text-[#818181] font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                                >
+                                                    {country}
+                                                </label>
+                                            </div>
+                                        )
+                                    )}
                                     {/* <Button
-                                        variant={"ghost"}
-                                        className="p-0 text-[#FFAB41] hover:bg-[#fff]"
-                                    >
-                                        Показать еще...
-                                    </Button> */}
+                                    variant={"ghost"}
+                                    className="p-0 text-[#FFAB41] hover:bg-[#fff]"
+                                >
+                                    Показать еще...
+                                </Button> */}
                                     <div className="">
                                         <Button
                                             onClick={() => {
@@ -151,9 +153,9 @@ export default function Catalog() {
                                     Размеры
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
-                                    {filters?.sizes?.map((size: any) => (
+                                    {filters?.sizes?.map((size: any, ind) => (
                                         <div
-                                            key={size}
+                                            key={ind}
                                             className="flex items-center space-x-2"
                                         >
                                             <Checkbox
@@ -170,11 +172,11 @@ export default function Catalog() {
                                         </div>
                                     ))}
                                     {/* <Button
-                                        variant={"ghost"}
-                                        className="p-0 text-[#FFAB41] hover:bg-[#fff]"
-                                    >
-                                        Показать еще...
-                                    </Button> */}
+                                    variant={"ghost"}
+                                    className="p-0 text-[#FFAB41] hover:bg-[#fff]"
+                                >
+                                    Показать еще...
+                                </Button> */}
                                     <div className="">
                                         <Button
                                             onClick={() => {
@@ -194,32 +196,34 @@ export default function Catalog() {
                                     Объемы
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
-                                    {filters?.volumes?.map((volume: any) => (
-                                        <div
-                                            key={volume}
-                                            className="flex items-center space-x-2"
-                                        >
-                                            <Checkbox
-                                                onClick={() =>
-                                                    setVolume_(volume)
-                                                }
-                                                className="border-[#C5C5C5] bg-[#F0F1F2"
-                                                id="terms"
-                                            />
-                                            <label
-                                                htmlFor="terms"
-                                                className="text-sm text-[#818181] font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    {filters?.volumes?.map(
+                                        (volume: any, ind) => (
+                                            <div
+                                                key={ind}
+                                                className="flex items-center space-x-2"
                                             >
-                                                {volume}
-                                            </label>
-                                        </div>
-                                    ))}
+                                                <Checkbox
+                                                    onClick={() =>
+                                                        setVolume_(volume)
+                                                    }
+                                                    className="border-[#C5C5C5] bg-[#F0F1F2"
+                                                    id="terms"
+                                                />
+                                                <label
+                                                    htmlFor="terms"
+                                                    className="text-sm text-[#818181] font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                                >
+                                                    {volume}
+                                                </label>
+                                            </div>
+                                        )
+                                    )}
                                     {/* <Button
-                                        variant={"ghost"}
-                                        className="p-0 text-[#FFAB41] hover:bg-[#fff]"
-                                    >
-                                        Показать еще...
-                                    </Button> */}
+                                    variant={"ghost"}
+                                    className="p-0 text-[#FFAB41] hover:bg-[#fff]"
+                                >
+                                    Показать еще...
+                                </Button> */}
                                     <div className="">
                                         <Button
                                             onClick={() => {
@@ -240,9 +244,9 @@ export default function Catalog() {
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
                                     {filters?.sizes_of_brackets?.map(
-                                        (sizes_of_bracket: any) => (
+                                        (sizes_of_bracket: any, ind) => (
                                             <div
-                                                key={sizes_of_bracket}
+                                                key={ind}
                                                 className="flex items-center space-x-2"
                                             >
                                                 <Checkbox
@@ -264,11 +268,11 @@ export default function Catalog() {
                                         )
                                     )}
                                     {/* <Button
-                                        variant={"ghost"}
-                                        className="p-0 text-[#FFAB41] hover:bg-[#fff]"
-                                    >
-                                        Показать еще...
-                                    </Button> */}
+                                    variant={"ghost"}
+                                    className="p-0 text-[#FFAB41] hover:bg-[#fff]"
+                                >
+                                    Показать еще...
+                                </Button> */}
                                     <div className="">
                                         <Button
                                             onClick={() => {
@@ -291,9 +295,12 @@ export default function Catalog() {
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
                                     {filters?.heights_of_closing_brackets?.map(
-                                        (heights_of_closing_bracket: any) => (
+                                        (
+                                            heights_of_closing_bracket: any,
+                                            ind
+                                        ) => (
                                             <div
-                                                key={heights_of_closing_bracket}
+                                                key={ind}
                                                 className="flex items-center space-x-2"
                                             >
                                                 <Checkbox
@@ -315,11 +322,11 @@ export default function Catalog() {
                                         )
                                     )}
                                     {/* <Button
-                                        variant={"ghost"}
-                                        className="p-0 text-[#FFAB41] hover:bg-[#fff]"
-                                    >
-                                        Показать еще...
-                                    </Button> */}
+                                    variant={"ghost"}
+                                    className="p-0 text-[#FFAB41] hover:bg-[#fff]"
+                                >
+                                    Показать еще...
+                                </Button> */}
                                     <div className="">
                                         <Button
                                             onClick={() =>
@@ -342,9 +349,9 @@ export default function Catalog() {
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3">
                                     {filters?.outer_diameters_of_heads?.map(
-                                        (outer_diameters_of_head: any) => (
+                                        (outer_diameters_of_head: any, ind) => (
                                             <div
-                                                key={outer_diameters_of_head}
+                                                key={ind}
                                                 className="flex items-center space-x-2"
                                             >
                                                 <Checkbox
@@ -366,11 +373,11 @@ export default function Catalog() {
                                         )
                                     )}
                                     {/* <Button
-                                        variant={"ghost"}
-                                        className="p-0 text-[#FFAB41] hover:bg-[#fff]"
-                                    >
-                                        Показать еще...
-                                    </Button> */}
+                                    variant={"ghost"}
+                                    className="p-0 text-[#FFAB41] hover:bg-[#fff]"
+                                >
+                                    Показать еще...
+                                </Button> */}
                                     <div className="">
                                         <Button
                                             onClick={() =>
@@ -411,11 +418,8 @@ export default function Catalog() {
                             </Button>
                         </div>
                         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-2 mt-5">
-                            {products?.map((product: any) => (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                />
+                            {products?.map((product: any, ind) => (
+                                <ProductCard key={ind} product={product} />
                             ))}
                         </div>
                     </div>

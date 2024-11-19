@@ -39,8 +39,8 @@ const ProductHistory = () => {
                 </Button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-4">
-                {products?.map((product: any) => (
-                    <HistoryProductCard key={product?.id} product={product} />
+                {products?.map((product: any, index) => (
+                    <HistoryProductCard key={index} product={product} />
                 ))}
             </div>
             <ButtonLink label="Добавить товар" href="/client/home"></ButtonLink>

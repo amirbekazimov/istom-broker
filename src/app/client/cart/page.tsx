@@ -61,8 +61,8 @@ export default function Cart() {
                     <div className="flex-1">
                         <h1 className="text-[32px] font-bold">Корзина</h1>
                         {cart.length > 0 ? (
-                            cart.map((item) => (
-                                <CartItem key={item.id} product={item} />
+                            cart.map((item,ind) => (
+                                <CartItem key={ind} product={item} />
                             ))
                         ) : (
                             <div className="h-[300px] md:h-[400px] text-center flex flex-col gap-1 justify-center items-center">

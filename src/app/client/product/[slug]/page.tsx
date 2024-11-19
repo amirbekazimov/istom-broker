@@ -114,8 +114,11 @@ export default function ProductDetails({ params }: any) {
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper2 h-[370px] md:h-[500px] w-full "
                         >
-                            {data?.images?.map((image: any) => (
-                                <SwiperSlide className="border h-full w-full m-0 rounded-[10px]">
+                            {data?.images?.map((image: any, ind: any) => (
+                                <SwiperSlide
+                                    key={ind}
+                                    className="border h-full w-full m-0 rounded-[10px]"
+                                >
                                     <Image
                                         src={image.image}
                                         alt="product name"
@@ -134,10 +137,13 @@ export default function ProductDetails({ params }: any) {
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper mt-3"
                         >
-                            {data?.images?.map((image: any) => (
-                                <SwiperSlide className="border p-2 min-h-[60px] cursor-pointer rounded-md">
+                            {data?.images?.map((image: any, ind: any) => (
+                                <SwiperSlide
+                                    key={ind}
+                                    className="border p-2 min-h-[60px] cursor-pointer rounded-md"
+                                >
                                     <Image
-                                        src={image.image}
+                                        src={image?.image}
                                         alt="product name"
                                         className="w-full object-contain"
                                         fill

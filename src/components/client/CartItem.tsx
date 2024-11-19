@@ -14,7 +14,7 @@ import { Product } from "@/types";
 import Link from "next/link";
 
 const CartItem = ({ product }: { product: Product }) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     return (
         <div className="lg:h-[170px] border mt-3 rounded-[5px] flex flex-col md:flex-row justify-between items-start md:items-center p-8 gap-3">
@@ -25,7 +25,7 @@ const CartItem = ({ product }: { product: Product }) => {
                 >
                     <Image
                         className="w-full h-full object-cover rounded-[10px]"
-                        src={product?.images ? product?.images[0]?.image : ""}
+                        src={product?.images && product?.images[0]?.image}
                         alt={product.name}
                         width={110}
                         height={110}
