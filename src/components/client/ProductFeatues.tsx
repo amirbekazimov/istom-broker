@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-const ProductFeatues = ({ item }: string) => {
+const ProductFeatues = ({ item }: any) => {
     console.log(item);
 
     return (

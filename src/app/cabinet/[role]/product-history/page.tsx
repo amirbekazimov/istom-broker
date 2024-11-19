@@ -43,11 +43,7 @@ const ProductHistory = () => {
                     <HistoryProductCard product={product} />
                 ))}
             </div>
-            <ButtonLink
-                label="Добавить товар"
-                href="/client/home"
-                className="text-[18px] max-w-[510px] w-full border font-normal hover:brightness-[0.95] px-6 h-[55px] rounded-[12px] "
-            ></ButtonLink>
+            <ButtonLink label="Добавить товар" href="/client/home"></ButtonLink>
         </div>
     );
 };

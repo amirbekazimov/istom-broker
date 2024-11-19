@@ -10,8 +10,8 @@ const HistoryProductCard = ({ product }: any) => {
             <div className="flex gap-3">
                 <div className="min-w-[75px] h-[75px] md:min-w-[118px] md:h-[118px] border rounded-[10px]">
                     <Image
-                        src={ImageProduct}
-                        alt=""
+                        src={product?.images && product?.images[0]?.image}
+                        alt="no img"
                         className="object-cover w-full h-full"
                     />
                 </div>

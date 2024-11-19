@@ -70,7 +70,7 @@ const ProductCard = ({ product }: any) => {
                 </div>
                 <div className="h-[254px] w-full">
                     <Image
-                        src={product?.images ? product?.images[0]?.image : ""}
+                        src={product?.images && product?.images[0]?.image}
                         alt="product"
                         width={254} // add appropriate width here
                         height={254} // add appropriate height here

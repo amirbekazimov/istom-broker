@@ -23,7 +23,7 @@ import { Subscribe } from "@/components/common";
 import { ProductFeatues } from "@/components/client";
 import { useDispatch } from "react-redux";
 import { Product, addProduct } from "@/store/cartSlice/cartSlice";
-import { GetData } from "@/services.jsx/data";
+import { GetData, GetDataToken } from "@/services.jsx/data";
 const product = {
     id: 1,
     name: "ТОР Кламп № В5",
@@ -47,7 +47,7 @@ export default function ProductDetails({ params }: any) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        GetData(`api/v1/product/products/${params.slug}/`).then((res) => {
+        GetDataToken(`api/v1/product/products/${params.slug}/`).then((res) => {
             setData(res);
         });
     }, []);
@@ -114,14 +114,16 @@ export default function ProductDetails({ params }: any) {
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper2 h-[370px] md:h-[500px] w-full "
                         >
-                            <SwiperSlide className="border h-full w-full m-0 rounded-[10px]">
-                                <Image
-                                    src={ProductImage}
-                                    alt="product name"
-                                    className="w-full object-contain"
-                                    fill
-                                />
-                            </SwiperSlide>
+                            {data?.images?.map((image: any) => (
+                                <SwiperSlide className="border h-full w-full m-0 rounded-[10px]">
+                                    <Image
+                                        src={image.image}
+                                        alt="product name"
+                                        className="w-full object-contain"
+                                        fill
+                                    />
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                         <Swiper
                             onSwiper={setThumbsSwiper}
@@ -132,22 +134,16 @@ export default function ProductDetails({ params }: any) {
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper mt-3"
                         >
-                            <SwiperSlide className="border p-2 min-h-[60px] cursor-pointer">
-                                <Image
-                                    src={ProductImage}
-                                    alt="product name"
-                                    className="w-full object-contain"
-                                    fill
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide className="border p-2 min-h-[60px] cursor-pointer">
-                                <Image
-                                    src={ProductImage}
-                                    alt="product name"
-                                    className="w-full object-contain"
-                                    fill
-                                />
-                            </SwiperSlide>
+                            {data?.images?.map((image: any) => (
+                                <SwiperSlide className="border p-2 min-h-[60px] cursor-pointer rounded-md">
+                                    <Image
+                                        src={image.image}
+                                        alt="product name"
+                                        className="w-full object-contain"
+                                        fill
+                                    />
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                         <div className="block lg:hidden">
                             <h2 className="text-[24px] font-bold mt-4">
