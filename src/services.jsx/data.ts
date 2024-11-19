@@ -1,7 +1,7 @@
 import axios from "axios";
 // export const BASE_URL = "http://213.139.211.234:8000/";
-export const BASE_URL = "http://213.139.211.234:9095/";
-export const BASE_URL_IMG = "http://213.139.211.234:9095";
+export const BASE_URL = "https://api.istombroker.ru/";
+export const BASE_URL_IMG = "https://api.istombroker.ru";
 
 export const GetData = async (url: string) => {
     const response = await axios.get(BASE_URL + url);

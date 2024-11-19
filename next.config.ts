@@ -2,11 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
     images: {
+        domains: ["api.istombroker.ru"],
         remotePatterns: [
             {
-                protocol: "http",
-                hostname: "213.139.211.234",
-                port: "9095", // specify the port
+                protocol: "https",
+                hostname: "api.istombroker.ru", // Remove the 'https://' prefix
+                port: "9095", // Specify the port if needed
                 pathname: "/media/**", // Allow all images under `/media/`
             },
         ],
