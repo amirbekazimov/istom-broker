@@ -19,9 +19,9 @@ const Sidebar = ({ role }: { role: string }) => {
                 {links.map((link) => (
                     <li
                         onClick={() => {
-                            link.label == "Выход"
-                                ? localStorage.removeItem("token")
-                                : null;
+                            if (link.label === "Выход") {
+                                localStorage.removeItem("token");
+                            }
                         }}
                         key={link.path}
                     >
