@@ -11,6 +11,8 @@ import Link from "next/link";
 import { Checkbox } from "../ui/checkbox";
 import { useEffect, useState } from "react";
 import { PostData } from "@/services.jsx/data";
+import Image from "next/image";
+import UserIcon from "@/assets/icons/user-icon.svg";
 
 export function AuthModal() {
     const [username, setUsername] = useState("");
@@ -26,8 +28,10 @@ export function AuthModal() {
         PostData("api/v1/account/signin/", data)
             .then((res) => {
                 localStorage.setItem("token", res?.access);
-
                 setIsOpen(false);
+            })
+            .then(() => {
+                window.location.reload();
             })
             .catch(() => {
                 setErr(true);
@@ -62,13 +66,27 @@ export function AuthModal() {
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-                <Button
-                    className={`ms-8 text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px]`}
-                >
-                    Войти
-                </Button>
-            </DialogTrigger>
+            <div className="hidden md:block">
+                <DialogTrigger asChild>
+                    <Button
+                        className={`ms-8 text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px]`}
+                    >
+                        Войти
+                    </Button>
+                </DialogTrigger>
+            </div>
+            <div className="block md:hidden">
+                <DialogTrigger asChild>
+                    <Image
+                        src={UserIcon}
+                        alt="Istom Logo"
+                        className="object-contain"
+                        priority
+                        width={22}
+                        height={22}
+                    />
+                </DialogTrigger>
+            </div>
             <DialogContent
                 className={`sm:max-w-[570px] ${
                     err ? "bg-[#FF6565]" : "bg-[#F4F4F4]"

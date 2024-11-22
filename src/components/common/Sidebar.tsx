@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 const Sidebar = ({ role }: { role: string }) => {
@@ -16,7 +17,14 @@ const Sidebar = ({ role }: { role: string }) => {
         <aside className="sidebar h-screen hidden lg:block pe-5">
             <ul className="space-y-2">
                 {links.map((link) => (
-                    <li key={link.path}>
+                    <li
+                        onClick={() => {
+                            link.label == "Выход"
+                                ? localStorage.removeItem("token")
+                                : null;
+                        }}
+                        key={link.path}
+                    >
                         <Link className="text-[18px]" href={link.path}>
                             {link.label}
                         </Link>
