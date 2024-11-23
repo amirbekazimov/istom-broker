@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import { VscMenu } from "react-icons/vsc";
-import Logo from "@/assets/images/Istom-logo.png";
+import Logo from "@/assets/images/logoistomshop.svg";
 import CatalogIcon from "@/assets/icons/catalog-icon.svg";
 import SearchIcon from "@/assets/icons/search.svg";
 import FavoriteIcon from "@/assets/icons/favorite.svg";

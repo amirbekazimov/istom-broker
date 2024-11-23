@@ -3,7 +3,7 @@ import React from "react";
 import ImageProduct from "@/assets/images/image.png";
 
 const HistoryProductCard = ({ product }: any) => {
-    console.log(product);
+    // console.log(product);
 
     return (
         <div className="border rounded-[5px] p-5">
