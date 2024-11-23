@@ -98,15 +98,30 @@ export function AuthModal() {
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             {localStorage.getItem("token") ? (
-                <Button
-                    onClick={() => {
-                        localStorage.removeItem("token");
-                        window.location.reload();
-                    }}
-                    className={`ms-8 text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px]`}
-                >
-                    Выход
-                </Button>
+                <>
+                    <Button
+                        onClick={() => {
+                            localStorage.removeItem("token");
+                            window.location.reload();
+                        }}
+                        className={`ms-8 text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px] hidden md:block`}
+                    >
+                        Выход
+                    </Button>
+                    <Link
+                        href={"/cabinet/partner/statistics"}
+                        className="block md:hidden"
+                    >
+                        <Image
+                            src={UserIcon}
+                            alt="Istom Logo"
+                            className="object-contain"
+                            priority
+                            width={22}
+                            height={22}
+                        />
+                    </Link>
+                </>
             ) : (
                 <>
                     <div className="hidden md:block">

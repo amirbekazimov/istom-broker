@@ -11,6 +11,7 @@ import FavoriteIcon from "@/assets/icons/favorite.svg";
 import CartIcon from "@/assets/icons/cart-icon.svg";
 import PhoneIcon from "@/assets/icons/phone-icon.svg";
 import { AuthModal } from "./AuthModal";
+import UserIcon from "@/assets/icons/user-icon.svg";
 
 const Navbar: React.FC = () => {
     return (
@@ -90,6 +91,22 @@ const Navbar: React.FC = () => {
                                     />
                                     <span>Корзина</span>
                                 </Link>
+                                {localStorage.getItem("token") && (
+                                    <Link
+                                        href="/cabinet/partner/statistics"
+                                        className="flex flex-col space-y-1 font-normal items-center justify-center "
+                                    >
+                                        <Image
+                                            src={UserIcon}
+                                            alt="Istom Logo"
+                                            className="object-contain"
+                                            priority
+                                            width={25}
+                                            height={25}
+                                        />
+                                        <span>Кабинет</span>
+                                    </Link>
+                                )}
                             </div>
                             <AuthModal />
                         </div>
@@ -135,7 +152,7 @@ const Navbar: React.FC = () => {
                                 />
                             </Link>
                             <AuthModal />
-                            <Link href="/" className="">
+                            <Link href="/client/cart" className="">
                                 <Image
                                     src={CartIcon}
                                     alt="Istom Logo"
