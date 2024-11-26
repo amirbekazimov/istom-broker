@@ -10,9 +10,10 @@ import {
 import Link from "next/link";
 import { Checkbox } from "../ui/checkbox";
 import { useEffect, useState } from "react";
-import { PostData } from "@/services.jsx/data";
+import { GetDataToken, PostData } from "@/services.jsx/data";
 import Image from "next/image";
 import UserIcon from "@/assets/icons/user-icon.svg";
+import { useRouter } from "next/navigation";
 
 export function AuthModal() {
     const [username, setUsername] = useState("");
@@ -26,6 +27,16 @@ export function AuthModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [login, setLogin] = useState(true);
     const [userType, setUserType] = useState("Клиент");
+    const router = useRouter();
+
+    const [userRole, setUserRole] = useState("");
+
+    useEffect(() => {
+        const user = localStorage.getItem("role");
+        if (user) {
+            setUserRole(user);
+        }
+    }, [userRole]);
 
     const HandleSignIn = () => {
         const data = {
@@ -35,6 +46,11 @@ export function AuthModal() {
         PostData("api/v1/account/signin/", data)
             .then((res) => {
                 localStorage.setItem("token", res?.access);
+                if (localStorage.getItem("token")) {
+                    GetDataToken("api/v1/account/user/").then((res) => {
+                        localStorage.setItem("role", res?.groups[0]?.name);
+                    });
+                }
                 setIsOpen(false);
             })
             .then(() => {
@@ -93,15 +109,13 @@ export function AuthModal() {
         return () => clearInterval(intervalId);
     }, []);
 
-    console.log(userType);
-
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            {localStorage.getItem("token") ? (
+            {userRole != "" ? (
                 <>
                     <Button
                         onClick={() => {
-                            localStorage.removeItem("token");
+                            localStorage.clear();
                             window.location.reload();
                         }}
                         className={`ms-8 text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px] hidden md:block`}

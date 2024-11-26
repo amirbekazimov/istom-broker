@@ -19,7 +19,7 @@ const ProductHistory = () => {
             <div className="flex justify-between items-center">
                 <div className="flex md:items-center flex-col md:flex-row gap-3">
                     <h2 className="text-[24px] md:text-[36px] font-bold">
-                        Личный кабинет партнера
+                    История заказов
                     </h2>
                     <div className="flex items-center space-x-2">
                         <Checkbox

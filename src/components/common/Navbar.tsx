@@ -25,7 +25,14 @@ const Navbar: React.FC = () => {
                         <Link href="/contacts">Контакты</Link>
                     </div>
                     <div className="mt-4 flex items-center space-x-4">
-                        <Link href="/" className="max-w-[160px] w-full block">
+                        <Link
+                            href={
+                                localStorage.getItem("token")
+                                    ? "/client/home"
+                                    : "/"
+                            }
+                            className="max-w-[160px] w-full block"
+                        >
                             <Image
                                 src={Logo}
                                 alt="Istom Logo"

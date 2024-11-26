@@ -1,4 +1,5 @@
 // app/components/Layout/CabinetLayout.js
+"use client";
 
 import {
     Breadcrumb,
@@ -15,8 +16,20 @@ interface IProps {
     role: string;
 }
 import "./auth.css";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const CabinetLayout: React.FC<IProps> = ({ children, role }) => {
+    const router = useRouter();
+    const [userRole, setUserRole] = useState("");
+
+    useEffect(() => {
+        const user = localStorage.getItem("role");
+        if (user == "") {
+            router.push("/");
+        }
+    }, [userRole]);
+
     return (
         <div className=" min-h-screen container">
             <Breadcrumb className="my-5">

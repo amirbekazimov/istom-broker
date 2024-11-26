@@ -1,11 +1,22 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
 import Banner from "@/assets/images/login-banner.png";
 import LogoSingle from "@/assets/images/logo-single.svg";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+    const [userRole, setUserRole] = useState("");
+
+    useEffect(() => {
+        const user = localStorage.getItem("role");
+        if (user) {
+            setUserRole(user);
+        }
+    }, [userRole]);
     return (
         <section className="pt-10 pb-12 md:pb-20 border-t">
             <div className="relative flex justify-center items-center h-[360px] md:h-[650px] md:mx-4">
@@ -19,10 +30,14 @@ export default function Home() {
                         Войдите в личный кабинет как:
                     </h1>
                     <div className="flex justify-center items-center space-x-5 mt-2">
-                        <ButtonLink
-                            href="/cabinet/partner/product-history"
-                            label="Вход партнеру"
-                        />
+                        {userRole == "Партнер" ? (
+                            <ButtonLink
+                                href="/cabinet/partner/product-history"
+                                label="Вход партнеру"
+                            />
+                        ) : (
+                            <Button disabled className="max-w-[180px] w-full lg:max-w-[310px] text-[11px] lg:text-[18px] font-normal hover:brightness-[0.95] px-6 h-[33px] md:h-[50px] rounded-[5px] md:rounded-[12px]">Вход партнеру</Button>
+                        )}
                         <ButtonLink href="/client/home" label="Вход клиенту" />
                     </div>
                     <Image
