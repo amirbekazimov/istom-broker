@@ -1,30 +1,46 @@
-import { Consultation, HomeCarousel, OurPartner } from "@/components/client";
+import { HomeCarousel, HomeCategory } from "@/components/client";
 import ProductsList from "@/components/common/ProductsList";
-import { Button } from "@/components/ui/button";
+import bgImage from "@/assets/images/dark-card-bg.png";
+import DeliveryIcon from "@/assets/images/Delivery.svg";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <section className="py-6 container">
-      <div className=" items-center space-x-6 hidden md:flex">
-        <Button className="text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px] bg-[#F4F4F4] hover:bg-[#F4F4F4] text-black">
-          Распродажа
-        </Button> 
-        <Button className="text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px] bg-[#F4F4F4] text-black hover:bg-[#F4F4F4]">
-          Экспресс-доставка
-        </Button>
-        <Button className="text-[14px] font-normal hover:brightness-[0.95] px-6 h-[50px] rounded-[12px]">
-          Акции
-        </Button>
-      </div>
       <HomeCarousel />
       <div className="mt-16">
-        <ProductsList title="Наши новинки" />
+        <ProductsList title="Специальные предложения!" />
       </div>
-      <OurPartner />
       <div className="mt-16">
-        <ProductsList title="Наши акции" />
+        <HomeCategory />
       </div>
-      <Consultation />
+      {/* <div className="mt-16">
+        <ProductsList title="Рекомендуем для вас" adsBanner />
+      </div> */}
+      <div className="mt-16 grid grid-cols-3 gap-6 ">
+        <div className=" bg-[#111318] h-[260px] rounded-[10px] flex justify-center text-center relative">
+          <div className="absolute w-full top-0 left-0 overflow-hidden h-[50%]">
+            <Image
+              src={bgImage}
+              alt="bg-image"
+              className="w-full  object-contain -translate-y-[150px]"
+            />
+          </div>
+          <Image
+            src={DeliveryIcon}
+            alt="bg-image"
+            className="  -top-[80px] object-contain absolute"
+          />
+          <div className="max-w-[300px] w-full mt-auto py-8">
+            <h3 className="text-[18px] md:text-[25px] font-bold font-cygre text-white">
+              Качество
+            </h3>
+            <p className="text-[#A7A8AA] font-aeonic leading-tight">
+              Высокое качество печати и ультратонкая эластичная пленка
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

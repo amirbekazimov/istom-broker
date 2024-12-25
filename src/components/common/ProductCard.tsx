@@ -1,175 +1,164 @@
 "use client";
 
 import Image from "next/image";
-import exapleImage from "@/assets/images/image.png";
 import { Button } from "../ui/button";
 import { ImStarFull } from "react-icons/im";
-import { GoDotFill, GoHeart } from "react-icons/go";
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import {
-    Command,
-    CommandGroup,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command";
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover";
-import { Check } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { FaSortDown } from "react-icons/fa";
+import { GoHeartFill } from "react-icons/go";
+import React, { useState } from "react";
 import Link from "next/link";
 import { addProduct } from "@/store/cartSlice/cartSlice";
 import { useDispatch } from "react-redux";
 import { Product } from "@/types";
-const frameworks = [
-    {
-        value: "s",
-        label: "S",
-    },
-    {
-        value: "xl",
-        label: "XL",
-    },
-];
+import StoreIcon from "@/assets/icons/store-cart.svg";
 
 const ProductCard = ({ product }: any) => {
-    const dispatch = useDispatch();
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState("");
-    const [selectedSize, setSelectedSize] = useState<string>("");
-    const [quantity, setQuantity] = useState<number>(1);
-    const handleAddToCart = () => {
-        console.log(product);
-        if (product) {
-            console.log(product);
-            const productToAdd: Product = {
-                ...product,
-                quantity: quantity,
-                size: selectedSize,
-                totalPrice: product.price * quantity,
-            };
-            dispatch(addProduct(productToAdd));
-            setSelectedSize("");
-            setQuantity(1);
-        }
-    };
-    return (
-        <div className="max-w-[284px] h-[600px] w-full ">
-            <Link
-                href={`/client/product/${product?.id}`}
-                className="head w-full relative"
-            >
-                <div className="mb-10">
-                    <Button className="text-[10px] hover:brightness-[0.95] px-2 h-[25px] rounded-[5px] bg-[#A56FFD] hover:bg-[#A56FFD] tracking-[2px] font-bold">
-                        СОВЕТУЕМ
-                    </Button>
-                </div>
-                <div className="h-[254px] w-full">
-                    <Image
-                        src={product?.images && product?.images[0]?.image}
-                        alt="product"
-                        width={254} // add appropriate width here
-                        height={254} // add appropriate height here
-                        className="object-cover w-full h-full rounded-[10px]"
-                    />
-                </div>
-            </Link>
-            <div className="body mt-3">
-                <h3 className="text-[14px] font-normal">{product?.name}</h3>
-                <p className="text-[#818181] text-[12px] mt-3">
-                    Артикул товара: {product?.vendor_code}
-                </p>
-                <div className="mt-2 text-[12px] flex space-x-3">
-                    <div className="flex items-center space-x-1">
-                        <ImStarFull className="text-yellow text-[15px]" />{" "}
-                        <span>{product?.average_rating}</span>
-                    </div>
-                    <div
-                        className={`flex items-center space-x-1 ${
-                            product?.in_stock
-                                ? "text-[#85CA40]"
-                                : "text-[#818181]"
-                        }`}
-                    >
-                        <GoDotFill />
-                        <span>
-                            {product?.in_stock ? "В наличии" : "Нет в наличии"}
-                        </span>
-                    </div>
-                </div>
-                <div className="mt-3">
-                    <Popover open={open} onOpenChange={setOpen}>
-                        <PopoverTrigger asChild>
-                            <Button
-                                role="combobox"
-                                aria-expanded={open}
-                                className="w-full justify-between h-[32px] text-[14px] text-black bg-[#FFAB414D] rounded-[6px]"
-                            >
-                                {value
-                                    ? frameworks.find(
-                                          (framework) =>
-                                              framework.value === value
-                                      )?.label
-                                    : "Select size"}
-
-                                <FaSortDown className=" h-4 w-4 mb-1 shrink-0 " />
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className=" p-0">
-                            <Command>
-                                <CommandList>
-                                    <CommandGroup>
-                                        {frameworks.map((framework) => (
-                                            <CommandItem
-                                                key={framework.value}
-                                                value={framework.value}
-                                                onSelect={(currentValue) => {
-                                                    setValue(
-                                                        currentValue === value
-                                                            ? ""
-                                                            : currentValue
-                                                    );
-                                                    setOpen(false);
-                                                }}
-                                            >
-                                                <Check
-                                                    className={cn(
-                                                        "mr-2 h-4 w-4",
-                                                        value ===
-                                                            framework.value
-                                                            ? "opacity-100"
-                                                            : "opacity-0"
-                                                    )}
-                                                />
-                                                {framework.label}
-                                            </CommandItem>
-                                        ))}
-                                    </CommandGroup>
-                                </CommandList>
-                            </Command>
-                        </PopoverContent>
-                    </Popover>
-                </div>
-                <h4 className="text-[18px] font-bold mt-2">
-                    {product?.discount_price} ₽ / шт.
-                </h4>
-                <div className="mt-2 flex justify-between items-center">
-                    <Button
-                        onClick={handleAddToCart}
-                        className="text-[14px] font-semibold max-w-[220px] w-full  hover:brightness-[0.95] px-6 h-[40px] rounded-[12px]"
-                    >
-                        В корзину
-                    </Button>
-                    <GoHeart className="text-[26px] text-yellow" />
-                </div>
+  const dispatch = useDispatch();
+  const [selectedSize, setSelectedSize] = useState<string>("");
+  const [quantity, setQuantity] = useState<number>(1);
+  const handleAddToCart = () => {
+    if (product) {
+      const productToAdd: Product = {
+        ...product,
+        quantity: quantity,
+        size: selectedSize,
+        totalPrice: product.price * quantity,
+      };
+      dispatch(addProduct(productToAdd));
+      setSelectedSize("");
+      setQuantity(1);
+    }
+  };
+  return (
+    <React.Fragment>
+      <div className="hidden md:block max-w-[400px] w-full product-card p-3 rounded-[10px]">
+        <div className="py-2 flex items-center">
+          <div className="w-[70%]">
+            <h3 className="text-[17px] font-bold leading-[20px] font-cygre">
+              Наконечник &quot;KaVo&quot; турбинный
+            </h3>
+            <div className="flex items-center mt-2 gap-2 text-[14px] text-[#A7A7B2] font-aeonic">
+              <p>Осталось:</p>
+              <div className="w-[80px] h-[6px] rounded-full bg-[#E9E9E9] relative">
+                <div className="absolute w-[40%] h-full bg-[#FFB224] rounded-full"></div>
+              </div>
+              <p>35 шт</p>
             </div>
+          </div>
+          <div className="flex justify-end flex-1 text-xl">
+            <GoHeartFill color="#A7A7B2" />
+          </div>
         </div>
-    );
+        <Link
+          href={`/client/product/${product?.id}`}
+          className="head w-full relative"
+        >
+          <div className="h-[264px] w-full bg-[#00000010] rounded-[15px]">
+            <Image
+              src={product?.images && product?.images[0]?.image}
+              alt="product"
+              width={254}
+              height={254}
+              className="object-cover w-full h-full rounded-[15px]"
+            />
+          </div>
+        </Link>
+        <div className="mt-3 body font-aeonic">
+          <div className="info mb-4">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 font-cygre">
+                <span className="text-[18px] font-bold">18 200 ₽</span>
+                <span className="text-[#A7A7B2] text-[14px] font-bold line-through -translate-y-1">
+                  20 400 ₽
+                </span>
+              </div>
+              <div className="flex items-center  gap-1">
+                <div className="flex items-center gap-2">
+                  <ImStarFull className="text-[#F1C644]" />
+                  <span className="text-[15px]">4,8</span>
+                </div>
+                <div className="h-3 w-[1px] bg-[#A7A7B2]"></div>
+                <p className="text-[14px] text-[#A7A7B2]">112 оценок</p>
+              </div>
+            </div>
+            <p className="line-clamp-2 mt-2 text-[#A7A7B2] text-[15px] font-normal leading-[17px]">
+              SMARTmatic, S20, -, это, угловой, стоматологический...
+            </p>
+          </div>
+          <Button className="w-full h-[70px] text-[15px] font-bold rounded-[8px]">
+            <Image
+              src={StoreIcon}
+              alt="store icon"
+              className="mr-2 text-white"
+              width={20}
+            />
+            18 декабря
+          </Button>
+        </div>
+      </div>
+      <div className="md:hidden max-w-[400px] w-full product-card  rounded-[5px] relative">
+        <div className="head w-full relative">
+          <Button
+            variant={"ghost"}
+            className="p-0 h-auto absolute top-2 right-2"
+          >
+            <GoHeartFill color="#A7A7B2" />
+          </Button>
+          <Link
+            href={`/client/product/${product?.id}`}
+            className="h-[134px] block w-full bg-[#00000010] rounded-[5px]"
+          >
+            <Image
+              src={product?.images && product?.images[0]?.image}
+              alt="product"
+              width={254}
+              height={254}
+              className="object-cover w-full h-full rounded-[5px]"
+            />
+          </Link>
+        </div>
+        <div className="body p-2 font-aeonic">
+          <h3 className="text-[14px] font-bold leading-[18px] font-cygre">
+            Наконечник &quot;KaVo&quot; турбинный
+          </h3>
+          <p className="text-[12px] text-[#A7A7B2] font-aeonic mt-1">
+            Осталось:
+          </p>
+          <div className="flex items-center gap-2 text-[14px] text-[#A7A7B2] font-aeonic">
+            <div className="w-[70px] h-[5px] rounded-full bg-[#E9E9E9] relative">
+              <div className="absolute w-[40%] h-full bg-[#FFB224] rounded-full"></div>
+            </div>
+            <p className="font-normal text-xs">35 шт</p>
+          </div>
+          <div className="flex items-center gap-2 font-cygre mt-2">
+            <span className="text-[15px] font-bold">18 200 ₽</span>
+            <span className="text-[#A7A7B2] text-[11px] font-bold line-through -translate-y-1">
+              20 400 ₽
+            </span>
+          </div>
+          <div className="flex items-center  gap-1 mt-1">
+            <div className="flex items-center gap-2">
+              <ImStarFull className="text-[#F1C644] text-[12px]" />
+              <span className="text-[12px]">4,8</span>
+            </div>
+            <div className="h-3 w-[1px] bg-[#A7A7B2]"></div>
+            <p className="text-[12px] text-[#A7A7B2]">112 оценок</p>
+          </div>
+          <p className="line-clamp-2 mt-2 text-[#A7A7B2] text-[12px] font-normal leading-[13px]">
+            SMARTmatic, S20, -, это, угловой, стоматологический...
+          </p>
+          <Button className="w-full h-[45px] text-[12px] mt-2 font-bold rounded-[4px]">
+            <Image
+              src={StoreIcon}
+              alt="store icon"
+              className="mr-2 text-white "
+              width={12}
+            />
+            18 декабря
+          </Button>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default ProductCard;

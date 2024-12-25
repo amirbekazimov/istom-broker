@@ -1,40 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import { Footer, Navbar, Navigation } from "@/components/common";
 import "swiper/css";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/toaster";
-
-const geistMono = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Manrope-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Manrope-Medium.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Manrope-SemiBold.ttf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Manrope-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Manrope-ExtraBold.ttf",
-      weight: "800",
-      style: "normal",
-    },
-  ],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -48,11 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistMono.className} antialiased`}>
+      <body>
         <Providers>
           <Toaster />
           <Navbar />
-          <Navigation />
           {children}
           <Footer />
         </Providers>

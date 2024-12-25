@@ -22,11 +22,16 @@ const config: Config = {
         md: "800px",
         lg: "984px",
         xl: "1200px",
-        "3xl": "1300px",
+        "3xl": "1400px",
         "4xl": "1800px",
       },
     },
     extend: {
+      fontFamily: {
+        aeonic: ["Aeonic Pro", "sans-serif"],
+        cygre: ["Cygre", "sans-serif"],
+      },
+
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

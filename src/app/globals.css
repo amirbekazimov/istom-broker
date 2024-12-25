@@ -67,7 +67,90 @@
     @apply bg-background text-foreground;
   }
 }
+@font-face {
+  font-family: "Aeonic Pro";
+  src: url("/fonts/aeonikprotrial-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Aeonic Pro";
+  src: url("/fonts/aeonikprotrial-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Aeonic Pro";
+  src: url("/fonts/aeonikprotrial-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cygre";
+  src: url("/fonts/Cygre-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cygre";
+  src: url("/fonts/Cygre-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cygre";
+  src: url("/fonts/Cygre-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cygre";
+  src: url("/fonts/Cygre-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cygre";
+  src: url("/fonts/Cygre-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cygre";
+  src: url("/fonts/Cygre-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
 
 .product .mySwiper2 .swiper-slide {
   width: 100% !important;
+}
+
+.product-card {
+  box-shadow: 0px 7px 14px 0px #b5b5b51a, 0px 26px 26px 0px #b5b5b517,
+    0px 59px 35px 0px #b5b5b50d, 0px 104px 42px 0px #b5b5b503,
+    0px 163px 46px 0px #b5b5b500;
+}
+.home-carousel .swiper-pagination {
+  transform: translateY(-45px);
+}
+.home-carousel .swiper-pagination .swiper-pagination-bullet-active {
+  background: #ffb224;
+}
+@media screen and (max-width: 768px) {
+  .home-carousel .swiper-pagination {
+    width: 20px !important;
+    right: 10px !important;
+    display: flex;
+    flex-direction: column;
+    left: auto !important;
+    gap: 5px;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
