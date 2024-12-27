@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ProductCard } from "../common";
 import { GetData } from "@/services.jsx/data";
 import { Button } from "../ui/button";
+import adsBg from "@/assets/images/card.png";
 
 const ProductsList = ({
   title,
@@ -28,12 +29,17 @@ const ProductsList = ({
             <ProductCard product={product} key={index} />
           ))}
           {adsBanner && (
-            <div className="bg-[#FFB224] h-full rounded-[10px] p-4">
-              <h2 className="text-[35px] font-bold text-white leading-[45px]">
+            <div
+              style={{
+                background: `url(${adsBg.src}) no-repeat center center / cover`,
+              }}
+              className=" h-full w-full rounded-[5px] md:rounded-[10px] p-4 py-6 bg-cover"
+            >
+              <h2 className="text-[18px] md:text-[30px] font-bold text-white leading-tight font-cygre">
                 НОВОГОДНИЕ СКИДКИ!
               </h2>
-              <Button className="capitalize mt-3 bg-[#FFFFFF] font-bold rounded-full h-[54px] w-[192px] text-[#FFB224] ">
-                CkИДКИ ДО 60%
+              <Button className=" mt-3 font-aeonic bg-[#FFFFFF] text-xs md:text-[15px] font-bold rounded-full h-[38px] md:h-[54px] w-[130px] md:w-[192px] text-[#FFB224] ">
+                Скидки до 60%
               </Button>
             </div>
           )}

@@ -55,7 +55,7 @@ const ProductCard = ({ product }: any) => {
           <div className="h-[264px] w-full bg-[#00000010] rounded-[15px]">
             <Image
               src={product?.images && product?.images[0]?.image}
-              alt="product"
+              alt="product images"
               width={254}
               height={254}
               className="object-cover w-full h-full rounded-[15px]"
