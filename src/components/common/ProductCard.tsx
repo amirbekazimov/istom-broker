@@ -289,7 +289,6 @@
 // export default ProductCard;
 
 // 333
-
 'use client';
 
 import Image from 'next/image';
@@ -308,7 +307,6 @@ const ProductCard = ({ product }: { product: Product }) => {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState<number>(1);
-
   const [isFavorite, setIsFavorite] = useState<boolean>(product.is_featured);
 
   useEffect(() => {
@@ -336,21 +334,21 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <React.Fragment>
-      <div className='hidden md:block max-w-[400px] w-full product-card p-3 rounded-[10px]'>
+      <div className='hidden md:block max-w-[400px] w-full product-card p-3 rounded-[10px] flex flex-col min-h-[500px]'>
         <div className='py-2 flex items-center'>
-          <div className='w-[70%]'>
-            <h3 className='text-[17px] font-bold leading-[20px] font-cygre'>
+          <div className='w-[75%]'>
+            <h3 className='text-[17px] font-bold leading-[20px] font-cygre h-[40px] overflow-hidden line-clamp-2'>
               {product.name}
             </h3>
             <div className='flex items-center mt-2 gap-2 text-[14px] text-[#A7A7B2] font-aeonic'>
               <p>Осталось:</p>
-              <div className='w-[70px] h-[5px] rounded-full bg-[#E9E9E9] relative'>
+              <div className='w-[70px] h-[5px] overflow-hidden rounded-full bg-[#E9E9E9] relative'>
                 <div
                   className='absolute h-full bg-[#FFB224] rounded-full'
                   style={{ width: `${(product.quantity / 80) * 100}%` }}
                 ></div>
               </div>
-              <p>{product.quantity} шт</p>
+              <span>{product.quantity} шт</span>
             </div>
           </div>
           <div
@@ -362,7 +360,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
         <Link
           href={`/client/product/${product.id}`}
-          className='head w-full relative'
+          className='head w-full relative flex-1'
         >
           <div className='h-[264px] w-full bg-[#00000010] rounded-[15px]'>
             <Image
@@ -374,8 +372,8 @@ const ProductCard = ({ product }: { product: Product }) => {
             />
           </div>
         </Link>
-        <div className='mt-3 body font-aeonic'>
-          <div className='info mb-4'>
+        <div className='mt-3 body font-aeonic flex flex-col flex-1'>
+          <div className='info mb-4 flex-1'>
             <div className='flex items-center gap-3'>
               <div className='flex items-center gap-2 font-cygre'>
                 <span className='text-[18px] font-bold'>{product.price} ₽</span>
@@ -398,7 +396,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               {product.description}
             </p>
           </div>
-          <Button className='w-full h-[70px] text-[15px] font-bold rounded-[8px]'>
+          <Button className='w-full h-[70px] text-[15px] font-bold rounded-[8px] mt-auto'>
             <Image
               src={StoreIcon}
               alt='store icon'
