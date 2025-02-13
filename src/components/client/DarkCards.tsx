@@ -17,6 +17,7 @@ const DarkCards = () => {
               src={bgImage}
               alt="bg-image"
               className="w-full  object-contain -translate-y-[150px]"
+              loading="lazy"
             />
           </div>
           <Image
@@ -39,12 +40,14 @@ const DarkCards = () => {
               src={bgImage}
               alt="bg-image"
               className="w-full  object-contain -translate-y-[150px]"
+              loading="lazy"
             />
           </div>
           <Image
             src={DeliveryIcon}
             alt="bg-image"
             className="-top-[110px] object-contain absolute z-10 w-[280px]"
+            loading="lazy"
           />
           <div className="max-w-[300px] w-full mt-auto py-8">
             <h3 className="text-[18px] md:text-[25px] font-bold font-cygre text-white">
@@ -61,12 +64,14 @@ const DarkCards = () => {
               src={bgImage}
               alt="bg-image"
               className="w-full  object-contain -translate-y-[150px]"
+              loading="lazy"
             />
           </div>
           <Image
             src={DeliveryIcon}
             alt="bg-image"
             className="-top-[110px] object-contain absolute z-10 w-[280px]"
+            loading="lazy"
           />
           <div className="max-w-[300px] w-full mt-auto py-8">
             <h3 className="text-[18px] md:text-[25px] font-bold font-cygre text-white">
@@ -103,12 +108,14 @@ const DarkCards = () => {
                   src={bgImage}
                   alt="bg-image"
                   className="w-full  object-contain -translate-y-[120px] md:-translate-y-[150px]"
+                  loading="lazy"
                 />
               </div>
               <Image
                 src={DeliveryIcon}
                 alt="bg-image"
                 className="-top-[80px] md:-top-[110px] object-contain absolute z-10 w-[200px]"
+                loading="lazy"
               />
               <div className="max-w-[200px] md:max-w-[300px] w-full mt-auto py-8">
                 <h3 className="text-[18px] md:text-[25px] font-bold font-cygre text-white">
@@ -127,12 +134,14 @@ const DarkCards = () => {
                   src={bgImage}
                   alt="bg-image"
                   className="w-full  object-contain -translate-y-[120px] md:-translate-y-[150px]"
+                  loading="lazy"
                 />
               </div>
               <Image
                 src={DeliveryIcon}
                 alt="bg-image"
                 className="-top-[80px] md:-top-[110px] object-contain absolute z-10 w-[200px]"
+                loading="lazy"
               />
               <div className="max-w-[200px] md:max-w-[300px] w-full mt-auto py-8">
                 <h3 className="text-[18px] md:text-[25px] font-bold font-cygre text-white">

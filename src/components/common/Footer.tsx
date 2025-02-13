@@ -17,13 +17,19 @@ const Footer: React.FC = () => {
             src={Logo}
             alt="logo"
             className="object-contain w-[200px] md:w-[260px]"
+            loading="lazy"
           />
           <div className="flex gap-3 mt-4">
             <Link
               href={"#"}
               className="w-[40px] h-[40px] md:w-[44px] md:h-[44px] bg-white flex items-center justify-center rounded-lg"
             >
-              <Image src={Vk} alt="telegram" className="w-[18px] md:w-[20px]" />
+              <Image
+                src={Vk}
+                alt="telegram"
+                className="w-[18px] md:w-[20px]"
+                loading="lazy"
+              />
             </Link>
             <Link
               href={"#"}
@@ -32,6 +38,7 @@ const Footer: React.FC = () => {
               <Image
                 src={Telegram}
                 alt="telegram"
+                loading="lazy"
                 className="w-[16px] md:w-[18px]"
               />
             </Link>
@@ -45,12 +52,14 @@ const Footer: React.FC = () => {
             <Image
               src={Visa}
               alt="visa card"
+              loading="lazy"
               className="w-[33px] md:w-[50px]"
             />
             <Image src={Mir} alt="mir card" className="w-[38px]  md:w-[58px]" />
             <Image
               src={MasterCard}
               alt="master-card"
+              loading="lazy"
               className="w-[82px] md:w-[125px] object-contain"
             />
           </div>

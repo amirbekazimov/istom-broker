@@ -96,15 +96,17 @@ const ProductDetailInfo: React.FC<ProductInfo> = ({ productData }) => {
           так, и, для, терапевтов., Высококачественные, износостойкие, материалы
         </p>
       </div>
-      <div className="flex items-center h-[85px] gap-2 font-aeonic">
-        <Button className="h-full flex-1 font-bold">Купить в один клик</Button>
+      <div className="flex flex-col md:flex-row items-center h-auto md:h-[85px] mt-5 gap-2 font-aeonic">
+        <Button className="min-h-[60px] md:min-h-auto h-full w-full md:w-auto rounded-sm flex-1 font-bold">
+          Купить в один клик
+        </Button>
         <Button
           onClick={handleAddToCart}
-          className="h-full flex-1 bg-[#FFF7E8] font-bold text-[#FFB224] hover:bg-[#FFF7E8]"
+          className="min-h-[60px] md:min-h-auto w-full md:w-auto md:h-full rounded-sm flex-1 bg-[#FFF7E8] font-bold text-[#FFB224] hover:bg-[#FFF7E8]"
         >
           Добавить в корзину
         </Button>
-        <Button className="h-full w-[65px] p-0 bg-[#F6F6F6] hover:bg-[#F6F6F6]">
+        <Button className="hidden md:block h-full w-[65px] p-0 bg-[#F6F6F6] hover:bg-[#F6F6F6]">
           <GoHeartFill className=" text-[#A7A7B2]" />
         </Button>
       </div>
