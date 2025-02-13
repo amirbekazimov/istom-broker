@@ -289,6 +289,7 @@
 // export default ProductCard;
 
 // 333
+
 'use client';
 
 import Image from 'next/image';
@@ -303,7 +304,13 @@ import { Product } from '@/types';
 import StoreIcon from '@/assets/icons/store-cart.svg';
 import { addFavoriteProduct } from '@/services.jsx/products';
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({
+  product,
+  onRemoveFavorite,
+}: {
+  product: Product;
+  onRemoveFavorite?: (id: number) => void;
+}) => {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState<number>(1);
@@ -329,12 +336,15 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   const addToFavorite = (id: number) => {
     setIsFavorite(!isFavorite);
+    if (onRemoveFavorite) {
+      onRemoveFavorite(id);
+    }
     addFavoriteProduct(id);
   };
 
   return (
     <React.Fragment>
-      <div className='hidden md:block max-w-[400px] w-full product-card p-3 rounded-[10px] flex flex-col min-h-[500px]'>
+      <div className='max-w-[400px] w-full product-card p-3 rounded-[10px] flex flex-col min-h-[500px] bg-white shadow-md'>
         <div className='py-2 flex items-center'>
           <div className='w-[75%]'>
             <h3 className='text-[17px] font-bold leading-[20px] font-cygre h-[40px] overflow-hidden line-clamp-2'>
@@ -353,7 +363,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
           <div
             onClick={() => addToFavorite(product.id)}
-            className='flex justify-end flex-1 text-xl'
+            className='flex justify-end flex-1 text-xl cursor-pointer'
           >
             <GoHeartFill color={isFavorite ? '#FFB224' : '#A7A7B2'} />
           </div>
@@ -396,7 +406,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               {product.description}
             </p>
           </div>
-          <Button className='w-full h-[70px] text-[15px] font-bold rounded-[8px] mt-auto'>
+          <Button className='w-full h-[50px] md:h-[70px] text-[15px] font-bold rounded-[8px] mt-auto flex items-center justify-center'>
             <Image
               src={StoreIcon}
               alt='store icon'

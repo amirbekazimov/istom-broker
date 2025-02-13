@@ -13,7 +13,7 @@ const FavoriteProductList = ({
   title: string;
   adsBanner?: boolean;
 }) => {
-  const [products, setProducts] = useState([{ name: '' }]);
+  const [products, setProducts] = useState([{ id: 0, name: '' }]);
 
   // useEffect(() => {
   //   GetData("api/v1/product/products/?is_discount=true").then((res) => {
@@ -30,6 +30,20 @@ const FavoriteProductList = ({
       .catch(console.error);
   }, []);
 
+  const handleRemoveFavorite = (productId: number) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) =>
+        product.id === productId ? { ...product, is_featured: false } : product
+      )
+    );
+
+    setTimeout(() => {
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== productId)
+      );
+    }, 300);
+  };
+
   return (
     <section>
       <div className='relative'>
@@ -38,7 +52,11 @@ const FavoriteProductList = ({
         </h2>
         <div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full  gap-2 md:gap-4'>
           {products?.map((product: any, index) => (
-            <ProductCard product={product} key={index} />
+            <ProductCard
+              product={product}
+              key={index}
+              onRemoveFavorite={handleRemoveFavorite}
+            />
           ))}
           {adsBanner && (
             <div
