@@ -36,7 +36,8 @@ const Login = () => {
       Cookie.set('token', access, { secure: true });
       Cookie.set('refresh_token', refresh, { secure: true });
 
-      router.push('/cabinet/partner');
+      // router.push('/cabinet/partner');
+      window.location.href = '/cabinet/partner';
     } catch (error: any) {
       if (error.response && error.response.status === 401) {
         alert('Неверный логин или пароль!');

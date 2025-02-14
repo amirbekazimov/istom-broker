@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import { GoHeartFill } from 'react-icons/go';
 import { IoLogInOutline } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa6';
+import { BsFillFileCheckFill } from 'react-icons/bs';
 
 export default function RootLayout({
   children,
@@ -39,7 +40,7 @@ export default function RootLayout({
             className='flex justify-center items-center w-full flex-col text-center'
           >
             <div className='w-[50px] h-[50px] bg-[#434549] mb-2 rounded-full flex items-center justify-center'>
-              <GoHeartFill size={25} />
+              <BsFillFileCheckFill size={25} />
             </div>
             <span className='font-normal text-sm leading-tight ,'>
               История заказов

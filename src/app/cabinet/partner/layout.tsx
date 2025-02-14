@@ -2,6 +2,12 @@ import { Heart } from 'lucide-react';
 import Link from 'next/link';
 import { GoHeartFill } from 'react-icons/go';
 
+import { GiPieChart } from 'react-icons/gi';
+import { IoLogInOutline } from 'react-icons/io5';
+import { FaUser } from 'react-icons/fa6';
+import { BsBoxFill } from 'react-icons/bs';
+import { BsFillFileCheckFill } from 'react-icons/bs';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -12,25 +18,36 @@ export default function RootLayout({
       <div className='w-[110px] text-white space-y-4'>
         <div className='bg-[#111318] py-6 px-3 font-aeonic rounded-full space-y-4'>
           <Link
+            href='/cabinet/partner/statistics'
+            className='flex justify-center items-center w-full flex-col text-center'
+          >
+            <div className='w-[50px] h-[50px] bg-[#434549] mb-2 rounded-full flex items-center justify-center'>
+              <GiPieChart size={25} />
+            </div>
+            <span className='font-normal text-sm leading-tight ,'>
+              Статистика
+            </span>
+          </Link>
+          <Link
+            href='/cabinet/partner/product-history'
+            className='flex justify-center items-center w-full flex-col text-center'
+          >
+            <div className='w-[50px] h-[50px] bg-[#434549] mb-2 rounded-full flex items-center justify-center'>
+              <BsFillFileCheckFill size={25} />
+            </div>
+            <span className='font-normal text-sm leading-tight ,'>
+              История заказов
+            </span>
+          </Link>
+          <Link
             href='/cabinet/client'
             className='flex justify-center items-center w-full flex-col text-center'
           >
             <div className='w-[50px] h-[50px] bg-[#434549] mb-2 rounded-full flex items-center justify-center'>
-              <GoHeartFill size={25} />
+              <BsBoxFill size={25} />
             </div>
             <span className='font-normal text-sm leading-tight ,'>
-              Избранные товары
-            </span>
-          </Link>
-          <Link
-            href='/cabinet/client/product-history'
-            className='flex justify-center items-center w-full flex-col text-center'
-          >
-            <div className='w-[50px] h-[50px] bg-[#434549] mb-2 rounded-full flex items-center justify-center'>
-              <GoHeartFill size={25} />
-            </div>
-            <span className='font-normal text-sm leading-tight ,'>
-              История заказов
+              Добавить товар
             </span>
           </Link>
         </div>
@@ -40,7 +57,7 @@ export default function RootLayout({
             className='flex justify-center items-center w-full flex-col text-center'
           >
             <div className='w-[50px] h-[50px] bg-[#FFC55B] mb-2 rounded-full flex items-center justify-center'>
-              <GoHeartFill size={25} />
+              <FaUser size={25} />
             </div>
             <span className='font-normal text-sm leading-tight ,'>Профиль</span>
           </Link>
@@ -49,7 +66,7 @@ export default function RootLayout({
             className='flex justify-center items-center w-full flex-col text-center'
           >
             <div className='w-[50px] h-[50px] bg-[#FFC55B] mb-2 rounded-full flex items-center justify-center'>
-              <GoHeartFill size={25} />
+              <IoLogInOutline size={25} />
             </div>
             <span className='font-normal text-sm leading-tight ,'>Выйти</span>
           </Link>
