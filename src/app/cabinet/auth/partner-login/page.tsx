@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import bgImage from '@/assets/images/Form-partner.png';
 import Link from 'next/link';
 import { Label } from '@/components/ui/label';
@@ -9,13 +9,46 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { login } from '@/services.jsx/auth';
 
+import Cookie from 'js-cookie';
+
 const Login = () => {
   const router = useRouter();
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const [inputValue, setInputValue] = useState({
+    login: '',
+    password: '',
+    is_partner: true,
+  });
+
+  // const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   login('login', 'password')
+  //     .then(() => router.push('/cabinet/partner'))
+  //     .catch(console.error);
+  // };
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login('login', 'password')
-      .then(() => router.push('/cabinet/partner'))
-      .catch(console.error);
+
+    try {
+      const response = await login(inputValue.login, inputValue.password);
+      const { access, refresh } = response;
+
+      Cookie.set('token', access, { secure: true });
+      Cookie.set('refresh_token', refresh, { secure: true });
+
+      router.push('/cabinet/partner');
+    } catch (error: any) {
+      if (error.response && error.response.status === 401) {
+        alert('Неверный логин или пароль!');
+      } else {
+        console.error('Login failed:', error);
+        alert('Что-то пошло не так. Попробуйте снова.');
+      }
+
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 2000);
+    }
   };
   return (
     <div className='py-6 container min-h-[250px] md:min-h-[450px]'>
@@ -43,20 +76,26 @@ const Login = () => {
               </Label>
               <Input
                 id='name'
+                onChange={(e) =>
+                  setInputValue({ ...inputValue, login: e.target.value })
+                }
                 placeholder='Введите ваше имя'
                 className='w-full text-[15px] px-5 font-aeonic h-[57px] md:h-[63px] focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0 rounded-[3px] border-0 text-base bg-[#222428]  placeholder:text-[#5B5B5B]'
               />
             </div>
             <div className='space-y-1 mt-2 relative'>
               <Label
-                htmlFor='name'
+                htmlFor='password'
                 className='font-normal font-aeonic text-[13px] md:text-[15px] text-[#5B5B5B]'
               >
                 Пароль
               </Label>
               <Input
-                id='name'
-                placeholder='Введите ваше имя'
+                id='password'
+                onChange={(e) =>
+                  setInputValue({ ...inputValue, password: e.target.value })
+                }
+                placeholder='Введите пароль'
                 className='w-full text-[15px] px-5 font-aeonic h-[57px] md:h-[63px] focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0 rounded-[3px] border-0 text-base bg-[#222428]  placeholder:text-[#5B5B5B]'
               />
               <EyeOffIcon

@@ -18,16 +18,6 @@ const Login = () => {
     password: '',
   });
 
-  // const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   login(inputValue.login, inputValue.password)
-  //     .then(
-  //       (res) => {}
-  //       // router.push('/cabinet/client')
-  //     )
-  //     .catch(console.error);
-  // };
-
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

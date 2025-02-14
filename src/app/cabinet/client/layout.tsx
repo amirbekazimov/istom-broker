@@ -1,12 +1,24 @@
-import { Heart } from 'lucide-react';
+'use client';
+
 import Link from 'next/link';
+
+import Cookies from 'js-cookie';
+
 import { GoHeartFill } from 'react-icons/go';
+import { IoLogInOutline } from 'react-icons/io5';
+import { FaUser } from 'react-icons/fa6';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const handleLogOut = () => {
+    Cookies.remove('token');
+    Cookies.remove('refresh_token');
+    window.location.href = '/';
+  };
+
   return (
     <div className='min-h-[400px] container py-10 flex gap-12 items-start'>
       <div className='w-[110px] text-white space-y-4'>
@@ -40,16 +52,17 @@ export default function RootLayout({
             className='flex justify-center items-center w-full flex-col text-center'
           >
             <div className='w-[50px] h-[50px] bg-[#FFC55B] mb-2 rounded-full flex items-center justify-center'>
-              <GoHeartFill size={25} />
+              <FaUser size={25} />
             </div>
             <span className='font-normal text-sm leading-tight ,'>Профиль</span>
           </Link>
           <Link
+            onClick={handleLogOut}
             href='/cabinet/client'
             className='flex justify-center items-center w-full flex-col text-center'
           >
             <div className='w-[50px] h-[50px] bg-[#FFC55B] mb-2 rounded-full flex items-center justify-center'>
-              <GoHeartFill size={25} />
+              <IoLogInOutline size={25} />
             </div>
             <span className='font-normal text-sm leading-tight ,'>Выйти</span>
           </Link>

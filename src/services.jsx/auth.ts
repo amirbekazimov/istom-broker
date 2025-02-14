@@ -7,11 +7,13 @@ interface AuthResponse {
 
 export const login = async (
   login: string,
-  password: string | number
+  password: string | number,
+  is_partner?: boolean
 ): Promise<AuthResponse> => {
   const response = await apiClient.post('/auth/login', {
     login,
     password,
+    is_partner,
   });
   return response.data;
 };
