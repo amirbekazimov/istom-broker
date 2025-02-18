@@ -406,7 +406,10 @@ const ProductCard = ({
               {product.description}
             </p>
           </div>
-          <Button className='w-full h-[50px] md:h-[70px] text-[15px] font-bold rounded-[8px] mt-auto flex items-center justify-center'>
+          <Button
+            onClick={handleAddToCart}
+            className='w-full h-[50px] md:h-[70px] text-[15px] font-bold rounded-[8px] mt-auto flex items-center justify-center'
+          >
             <Image
               src={StoreIcon}
               alt='store icon'

@@ -1,10 +1,10 @@
-import ProductsList from "@/components/common/ProductsList";
-import React from "react";
+import ProductHistoryList from '@/components/common/ProductHistoryList';
+import React from 'react';
 
 const ProductHistory = () => {
   return (
     <div>
-      <ProductsList title={"История заказов"} />
+      <ProductHistoryList title={'История заказов'} />
     </div>
   );
 };

@@ -9,6 +9,7 @@ import {
 } from '@/components/client';
 import { GetData, GetDataToken } from '@/services.jsx/data';
 import CustomBreadcrumb from '@/components/common/CustomBreadcrumb';
+import { getProductDetail } from '@/services.jsx/products';
 
 const breadcrumbs = [
   { name: 'Каталог', link: '' },
@@ -17,11 +18,13 @@ const breadcrumbs = [
 
 export default function ProductDetails({ params }: any) {
   const [data, setData] = useState<any>(null);
+
   useEffect(() => {
-    GetData(`api/v1/product/products/${params.slug}/`).then((res) => {
+    getProductDetail(params.slug).then((res) => {
       setData(res);
+      console.log(res);
     });
-  }, []);
+  }, [params.slug]);
 
   return (
     <section className='pt-6 '>
