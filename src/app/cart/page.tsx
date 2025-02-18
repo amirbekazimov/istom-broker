@@ -106,7 +106,7 @@ export default function Cart() {
                   {totalPrice} ₽
                 </span>
               </div>
-              <Link href='/client/checkout'>
+              <Link href='/checkout'>
                 <Button className='bg-black w-full h-[60px] md:h-[80px] sm:w-[320px] text-xs md:text-sm font-bold md:rounded-lg hover:bg-black/90 text-white font-aeonic'>
                   Оформить заказ
                 </Button>

@@ -29,3 +29,8 @@ export const getProductDetail = async (product_id: any) => {
   const response = await apiClient.get(`/products/${product_id}`);
   return response.data;
 };
+
+export const orderProduct = async () => {
+  const response = await apiClient.post(`/orders`);
+  return response;
+};
