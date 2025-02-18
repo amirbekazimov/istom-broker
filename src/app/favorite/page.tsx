@@ -1,4 +1,5 @@
 import CustomBreadcrumb from '@/components/common/CustomBreadcrumb';
+import FavoriteProductList from '@/components/common/FavoriteProductList';
 import ProductsList from '@/components/common/ProductsList';
 
 const Favorite = () => {
@@ -11,7 +12,7 @@ const Favorite = () => {
         ]}
       />
       <div className='mb-16'>
-        <ProductsList title='Избранные товары' />
+        <FavoriteProductList title='Избранные товары' />
       </div>
     </div>
   );
