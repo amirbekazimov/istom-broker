@@ -14,3 +14,8 @@ export const addFavoriteProduct = async (product_id: any) => {
   const response = await apiClient.post(`/products/${product_id}/feature`);
   return response;
 };
+
+export const createProduct = async (product: any) => {
+  const response = await apiClient.post('/products', product);
+  return response;
+};
